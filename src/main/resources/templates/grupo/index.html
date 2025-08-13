@@ -58,14 +58,14 @@
                 </tbody>
             </table>
 
-            <nav th:if="${pageNumbers}">
-                <ul class="pagination justify-content-center">
-                    <li th:each="pageNum : ${pageNumbers}" class="page-item"
-                        th:classappend="${pageNum == grupos.number + 1} ? 'active'">
-                        <a  class="page-link" th:href="@{/grupos(page=${pageNum}, size=${grupos.size})}" th:text="${pageNum}"></a>
-                    </li>
-                </ul>
-            </nav>
+            <nav th:if="${pageNumbers != null}">
+        <ul class="pagination justify-content-center">
+            <li th:each="pageNum : ${pageNumbers}" class="page-item"
+                th:classappend="${pageNum == (grupos.number + 1)} ? 'active'">
+                <a class="page-link" th:href="@{/grupos(page=${pageNum}, size=${grupos.size})}" th:text="${pageNum}"></a>
+            </li>
+        </ul>
+        </nav>
     </section>
 </body>
 </html>

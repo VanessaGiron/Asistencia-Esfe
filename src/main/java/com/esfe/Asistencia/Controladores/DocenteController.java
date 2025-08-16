@@ -1,6 +1,8 @@
 package com.esfe.Asistencia.Controladores;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,6 +24,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.esfe.Asistencia.Modelos.Docente;
 import com.esfe.Asistencia.Servicios.Interfaces.IDocenteService;
+import com.esfe.Asistencia.Utilidades.PdfGeneratorService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/docentes")
@@ -29,6 +34,9 @@ public class DocenteController {
 
     @Autowired
     private IDocenteService docenteService;
+
+    @Autowired
+    private PdfGeneratorService pdfGeneratorService;
 
     @GetMapping
     public String index(Model model,
@@ -117,4 +125,23 @@ public class DocenteController {
         redirect.addFlashAttribute("msg", "Docente eliminado correctamente");
         return "redirect:/docentes";
        }
+
+       @GetMapping("/docentePDF")
+       public void generarPdf(Model model, HttpServletResponse response) throws Exception {
+        //1. Obtener datos a mostrar en el pdf
+        List<Docente> docentes = docenteService.buscarTodos(); //metodos para traer todos sin paginar
+        //2. preparar datos para ThymeLeaf
+        Map<String, Object> data = new HashMap<>();
+        data.put("docentes", docentes);
+        //3. Generar PDF (con el nombre de la plantilla ThymeLeaf que quieres usar)
+        byte[] pdfBytes = pdfGeneratorService.generatePdfReport("docente/RPDocente", data);
+        //4. Configurar la respuestas HTTP para descargar o mostrar el PDF
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "inline; filename=docentes.pdf");
+        response.setContentLength(pdfBytes.length);
+        //5. Escribir bytes en el output stream
+        response.getOutputStream().write(pdfBytes);
+        response.getOutputStream().flush();
+
+        }
     }

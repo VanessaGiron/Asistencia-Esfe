@@ -3,7 +3,7 @@ package com.esfe.Asistencia.Servicios.Implementaciones;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,11 @@ public class DocenteService implements IDocenteService {
 
     @Override
     public List<Docente> buscarTodos() {
+        return docenteRepository.findAll();
+    }
+
+    @Override
+    public List<Docente> obtenerTodos() {
         return docenteRepository.findAll();
     }
 

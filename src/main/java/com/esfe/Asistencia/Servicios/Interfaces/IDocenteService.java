@@ -13,6 +13,8 @@ public interface IDocenteService {
 
     List<Docente> buscarTodos();
 
+    List<Docente> obtenerTodos();
+
     Optional<Docente> buscarPorId(Integer id);
 
     Docente crearOEditar(Docente docente);

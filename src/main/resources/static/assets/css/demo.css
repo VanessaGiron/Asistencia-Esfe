@@ -68,7 +68,7 @@
     color: #ffffff;
     border-top-left-radius: 5px;
     border-bottom: 1px solid #ebedf2;
-    background: #5867dd; }
+    background: #6947c0; }
   .custom-template .custom-content {
     padding: 20px 15px;
     max-height: calc(100vh - 90px);
@@ -258,7 +258,7 @@ body[data-background-color="dark"] .demo-icon .icon-class {
   bottom: 12px;
   right: 12px;
   background: #fff;
-  color: #252F4A;
+  color: #68397e;
   font-weight: 600;
   flex-direction: column;
   align-items: center;

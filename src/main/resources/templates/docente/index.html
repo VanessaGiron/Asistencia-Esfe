@@ -8,6 +8,7 @@
     <title layout:fragment="title" >Listado de Docentes</title>
 </head>
 <body>
+
     <section layout:fragment="content">
         <div th:if="${msg != null }">
             <script>
@@ -31,7 +32,8 @@
             <h2>Listado de Docentes</h2>
 
             <div class="mb-3">
-                <a th:href="@{/docentes/create}" class="btn btn-success">Nuevo Docente</a>
+                <a th:href="@{/docentes/create}" class="btn btn-success">Nuevo Docente</a> |
+                <a th:href="@{/docentes/docentePDF}" class="btn btn-info">Generar Reporte</a>
             </div>
             
             <table class="table table-bordered">

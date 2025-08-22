@@ -20,12 +20,10 @@ public class DatabaseWebSecurity {
     public UserDetailsManager customUser(DataSource dataSource){
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
         users.setUsersByUsernameQuery("select login, clave, status as enabled from usuario where login = ?");
-        users.setAuthoritiesByUsernameQuery( "select u.login as username, r.nombre as authority " +
-    "from usuario_rol ur " +
+        users.setAuthoritiesByUsernameQuery( "select u.login, r.nombre as authority from usuario_rol ur " +
     "inner join usuario u on u.id = ur.usuario_id " +
     "inner join rol r on r.id = ur.rol_id " +
-    "where u.login = ?"
-);
+    "where u.login = ?");
 
         return users;
     }

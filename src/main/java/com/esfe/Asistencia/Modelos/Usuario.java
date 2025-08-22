@@ -20,7 +20,7 @@ public class Usuario {
 
     private int Status;
 
-    public Integer getId() {
+    public Integer getId(){
         return Id;
     }
     public void setId(Integer id) {
@@ -49,16 +49,25 @@ public class Usuario {
     }
 
     public List<Rol> getRoles() {
-        return roles;
+        return Roles;
     }
     public void setRoles(List<Rol> roles) {
-        this.roles = roles;
+        this.Roles = roles;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", 
     joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private List<Rol> roles;
-    
+    private List<Rol> Roles;
+
+    // METODO PARA AGREGAR ROLES
+    public void agregar(Rol tempRol) {
+        if (Roles == null) {
+            Roles = new LinkedList<>();
+            
+        }
+        Roles.add(tempRol);
+    }
 }
+

@@ -7,6 +7,7 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "grupo")
 public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

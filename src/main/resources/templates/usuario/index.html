@@ -54,10 +54,11 @@
             </tr>
         </table>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item" th:each="pageNumbers : ${pageNumbers}">
-                    <a class="page-link" th:href="@{|/usuarios?page=${pageNumbers}|}" th:text="${pageNumbers}"></a>
+        <nav th:if="${pageNumbers}">
+            <ul class="pagination justify-content-center">
+                <li th:each="pageNum : ${pageNumbers}" class="page-item"
+                    th:classappend="${pageNum == usuarios.number + 1} ? 'active'">
+                   <a class="page-link" th:href="@{/usuarios(page=${pageNum}, size=${usuarios.size})}" th:text="${pageNum}"></a>
                 </li>
             </ul>
         </nav>

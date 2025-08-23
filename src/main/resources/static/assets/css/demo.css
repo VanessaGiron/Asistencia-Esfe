@@ -188,7 +188,7 @@ body[data-background-color="dark"] .demo-icon .icon-class {
 .btnSwitch button[data-color="black"] {
   background-color: #191919; }
 .btnSwitch button[data-color="dark"] {
-  background-color: #1a2035; }
+  background-color: #425ec1; }
 .btnSwitch button[data-color="blue"] {
   background-color: #1572E8; }
 .btnSwitch button[data-color="purple"] {
@@ -242,7 +242,7 @@ body[data-background-color="dark"] .demo-icon .icon-class {
     transform: translateY(-2.5%);
     background: #e9f6f9; }
 #modalShowcase .preview-title {
-  color: #071437;
+  color: #4e1b9f;
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 22.750px; }
